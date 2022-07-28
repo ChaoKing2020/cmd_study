@@ -62,6 +62,7 @@ git fetch origin master // 获取远程的master分支
 git log -p master..origin/master // 查看远程master分支与本地master分支的差别
 // 合并到本地分支
 git merge origin/master
+
 ```
 
 ### 2、git pull
