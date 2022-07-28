@@ -30,6 +30,12 @@ git push origin <本地分支名>:<远程分支名>
 git push origin <本地分支名>
 git push
 
+
+#  更新并同步四部曲
+git add .
+git commit -m 'init'
+git pull git@github.com:ChaoKing2020/study.git main
+git push git@github.com:ChaoKing2020/study.git master:main
 ~~~
 
 
