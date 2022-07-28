@@ -4,10 +4,10 @@
 
 ~~~shell
 git init   # 初始化环境
-git add .  # 将当前目录下得所有文件添加至本地仓库
-git commit -m 'init'  # 提交至本地仓库。
+git add .  # 提交至暂存区
+git commit -m 'init'  # 提交至版本库
 
-git config -l  # 当前配置信息
+git config -l  # 查看当前配
 git status  # 查看当前状态。
 
 git checkout -b dev  # 建立一个新的本地分支dev。
@@ -17,7 +17,7 @@ git branch -d dev    # 删除本地分支dev。
 git clone url  # 克隆项目到本地。
 
 git remote rm origin  # 删除远程仓库地址
-git remote add origin git@github.com:ChaoKing2020/study.git  # 添加远程仓库地址
+git remote add origin git@github.com:ChaoKing2020/study.git  # 添加远程仓库地址的别名
 
 git pull --rebase origin main  # 拉取远程仓库下main分支的代码并与本地代码合并
 # git pull = git fetch + git merge。git fetch从远程仓库拉取最新版到本地，git merge自动合并远程仓库的代码。
