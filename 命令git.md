@@ -30,7 +30,6 @@ git push origin <本地分支名>:<远程分支名>
 git push origin <本地分支名>
 git push
 
-
 #  更新并同步四部曲
 git add .
 git commit -m 'init'
