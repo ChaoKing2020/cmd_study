@@ -125,8 +125,6 @@ docker run -d -p 3345:8080 tomcat:9.0 --name tomcat01
 docker exec -it tomcat01 /bin/bash
 ~~~
 
-​                                                                                                                                                                                                                                                      
-
 ## 六、安装portainer
 
 portainer是Docker的图形界面管理工具，并提供了一个后台面板供我们操作。

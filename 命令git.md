@@ -16,8 +16,8 @@ git branch -d dev    # 删除本地分支dev。
 
 git clone url  # 克隆项目到本地。
 
-git remote rm origin  # 删除远程仓库地址
-git remote add origin git@github.com:ChaoKing2020/study.git  # 添加远程仓库地址的别名
+git remote rm origin  # 删除远程仓库地址origin
+git remote add origin git@github.com:ChaoKing2020/study.git  # 添加远程仓库地址的别名origin
 
 git pull --rebase origin main  # 拉取远程仓库下main分支的代码并与本地代码合并
 # git pull = git fetch + git merge。git fetch从远程仓库拉取最新版到本地，git merge自动合并远程仓库的代码。
@@ -68,12 +68,11 @@ git fetch origin master // 获取远程的master分支
 git log -p master..origin/master // 查看远程master分支与本地master分支的差别
 // 合并到本地分支
 git merge origin/master
-
 ```
 
 ### 2、git pull
 
-> git pull相当于git fetch与git merge一起使用，但是这样使用容易出错所以推荐第一张方式
+> git pull相当于git fetch与git merge一起使用，但是这样使用容易出错所以推荐第一种方式
 
 ```git
 // 查看远程
