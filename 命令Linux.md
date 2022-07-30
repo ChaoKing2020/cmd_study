@@ -72,7 +72,6 @@ firewall-cmd --zone=public --add-port=6000-7000/tcp --permanent
 rm -r     # 只删除当前目录下的所有文件，且每次删除之前需确定。
 rm -rf *  # r表示recurrence，f表示force，删除当前目录下的所有文件和子目录。
 
-
 kill number process_name  # 杀死进程。
 # number为1(HUP)，重新加载进程；
 # 2(KILL)，杀死一个进程；
