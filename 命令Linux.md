@@ -115,3 +115,14 @@ sudo passwd root  # 修改root用户密码
 reboot  # 重启
 ~~~
 
+
+
+~~~shell
+rpm -qa | grep firefox  # 查看当前系统已经安装的rpm软件包
+rpm -e firefox  # 卸载rpm软件包
+rpm -ivh firefox-45.4.0-1.e17.centos.x86_64.rpm
+# -i=install 安装
+# -v=verbose 提示
+# -h=hash 进度条
+~~~
+
