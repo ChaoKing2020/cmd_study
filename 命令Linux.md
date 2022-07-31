@@ -2,8 +2,8 @@
 
 ~~~shell
 一般来说，Linux系统分两大基本类：
-RedHat系列：redhat、centos、fedora
-Debian系列：debian、ubuntu
+RedHat系列：redhat、centos(适合做服务器)
+Debian系列：debian、ubuntu(适合做可视化界面)
 
 包管理工具为yum。
 redhat系列的安装包格式为rpm，安装rpm包的命令为rpm -参数。
@@ -46,7 +46,7 @@ which name    # 查找系统PATH目录下的可执行文件。
 whereis name  # 通过文件索引数据库而非PATH来查找，查找范围比which要广。
 ~~~
 
-
+#### 防火墙设置
 
 
 ~~~shell
@@ -69,8 +69,11 @@ firewall-cmd --zone=public --add-port=6000-7000/tcp --permanent
 
 
 ~~~shell
-rm -r     # 只删除当前目录下的所有文件，且每次删除之前需确定。
-rm -rf *  # r表示recurrence，f表示force，删除当前目录下的所有文件和子目录。
+rm *  # 删除当前目录下的所有文件
+rm -r     # 删除目录及其子目录下的所有文件
+rm -rf *  # r表示recurrence，f表示force，删除目录及其子目录下的所有文件，无需确定是否删除
+# -r 表示递归删除子目录及文件
+# -f 表示无需确定是否删除
 
 kill number process_name  # 杀死进程。
 # number为1(HUP)，重新加载进程；
@@ -78,18 +81,22 @@ kill number process_name  # 杀死进程。
 # 3(TERM)，正常停止一个进程。
 
 df -hl  # 查看磁盘分区上的磁盘空间。
--a  # 包含全部的文件习题。
--h  # 以可读性较高的方式来显示信息。
--l  # 仅显示本地的文件系统。
+# -a  包含全部的文件习题。
+# -h  以可读性较高的方式来显示信息。
+# -l  仅显示本地的文件系统。
 
-wget(world wide web get)  # 是一个下载文件的工具。wget是在Linux下开发的开放源代码的软件。
+wget(world wide web get)  # 是一个下载文件的工具。wget是在Linux下开发的开源的软件。
 yum(Yellow dog Updater Modified)  # 能够从指定的服务器中下载RPM（Redhat Package Manager）包并且安装。
 
 curl,即(CommandLine Uniform Resource Locator)  # 利用URL语法在命令行下工作的文件传输工具
 pwd(print working directory)   # 显示当前工作路径。
 mkdir dir_name  # 在当前目录下创建文件夹
+touch file_name  # 创建新文件
 find *python*  # 查找当前目录下包含python关键字的文件
 source ./etc/profile  # 使环境变量生效。
+find / -name 'read*'   # 在/目录下查找read开头的文件或目录
+# -name:文件名或目录名
+# -type:查找类型，如-d表示查找目录
 
 # 清空文件内容
 vi file_name # 输入%d清除所有内容
@@ -100,6 +107,7 @@ vi file_name # 输入%d清除所有内容
 ~~~shell
 chown user1:user1 filename  # 更改当前文件的用户为user1
 chmod 777 filename  # 即change mode,对当前文件授权
+chmod u+x hello.sh  # 给用户添加可执行权限
 # 修改权限
 # 三个数字分别表示u(拥有者)、g(同组用户)、o(其他用户)的权限;
 # 4(可读)+2(可写)=6(读写)110
@@ -125,4 +133,29 @@ rpm -ivh firefox-45.4.0-1.e17.centos.x86_64.rpm
 # -v=verbose 提示
 # -h=hash 进度条
 ~~~
+
+~~~shell
+shell脚本的执行方式
+1、输入脚本的绝对路径或相对路径
+例如,/root/hello.sh 或 ./hello.sh
+2、bash或sh+脚本
+例如，sh hello.sh
+3、在脚本前加source
+例如，source hello.sh
+~~~
+
+#### 数组声明
+
+~~~shell
+sports=("篮球" "足球" "排球" "羽毛球")
+echo ${sports[0]}  # 输出数组第一个值
+echo ${sports[@]}  # 输出数组全部内容
+echo ${#sports[@]}  # 输出数组长度
+~~~
+
+
+
+
+
+
 

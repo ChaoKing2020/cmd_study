@@ -59,3 +59,9 @@ echo %var%
 pause
 ~~~
 
+
+
+~~~shell
+attrib file_name +h  # 隐藏文件
+~~~
+
