@@ -92,8 +92,8 @@ curl,即(CommandLine Uniform Resource Locator)  # 利用URL语法在命令行下
 pwd(print working directory)   # 显示当前工作路径。
 mkdir dir_name  # 在当前目录下创建文件夹
 touch file_name  # 创建新文件
-find *python*  # 查找当前目录下包含python关键字的文件
 source ./etc/profile  # 使环境变量生效。
+find *python*  # 查找当前目录下包含python关键字的文件
 find / -name 'read*'   # 在/目录下查找read开头的文件或目录
 # -name:文件名或目录名
 # -type:查找类型，如-d表示查找目录
