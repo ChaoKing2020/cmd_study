@@ -1,4 +1,4 @@
-### LInux分类
+### Linux分类
 
 ~~~shell
 一般来说，Linux系统分两大基本类：
@@ -15,7 +15,7 @@ debian系列的安装包格式为deb，安装deb包的命令为dpkg -参数。
 ### 常用命令
 
 ~~~shell
-ps -ef | grep tomcat  # 查看当前系统运行的进程。f为显示全格式。
+ps -ef | grep tomcat  # 查看当前系统运行的进程。f为format，显示全格式。
 ps -aux  # 查看当前所有进程
 # ps(process status)显示当前进程信息。
 # grep(global regular experssion print)全面正则表达式打印。它能够使用正则表达式搜索文本，并把匹配的行打印出来，是一种强大的文本搜索工具。
@@ -105,9 +105,10 @@ vi file_name # 输入%d清除所有内容
 
 
 ~~~shell
-chown user1:user1 filename  # 更改当前文件的用户为user1
+chown user_name:group_name file_name  # 更改当前文件的用户为user_name,组为group_name
 chmod 777 filename  # 即change mode,对当前文件授权
 chmod u+x hello.sh  # 给用户添加可执行权限
+chmod +x hello.sh  # 给当前用户、同组用户、其他用户添加可执行权限
 # 修改权限
 # 三个数字分别表示u(拥有者)、g(同组用户)、o(其他用户)的权限;
 # 4(可读)+2(可写)=6(读写)110
@@ -134,10 +135,12 @@ rpm -ivh firefox-45.4.0-1.e17.centos.x86_64.rpm
 # -h=hash 进度条
 ~~~
 
+#### shell脚本的执行方式
+
 ~~~shell
-shell脚本的执行方式
 1、输入脚本的绝对路径或相对路径
 例如,/root/hello.sh 或 ./hello.sh
+注意："./"执行脚本需要获得可执行权限
 2、bash或sh+脚本
 例如，sh hello.sh
 3、在脚本前加source
@@ -153,9 +156,14 @@ echo ${sports[@]}  # 输出数组全部内容
 echo ${#sports[@]}  # 输出数组长度
 ~~~
 
+#### $符号
 
-
-
-
-
+~~~shell
+$#  # 参数个数
+$0  # 文件名
+$1  # 第一个参数
+$2	# 第二个参数
+$@  # 所有参数
+$?  # 上一指令的返回值，成功返回True，失败返回False
+~~~
 
