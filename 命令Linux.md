@@ -4,7 +4,6 @@
 一般来说，Linux系统分两大基本类：
 RedHat系列：redhat、centos(适合做服务器)
 Debian系列：debian、ubuntu(适合做可视化界面)
-hhh
 
 包管理工具为yum。
 redhat系列的安装包格式为rpm，安装rpm包的命令为rpm -参数。
