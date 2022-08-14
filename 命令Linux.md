@@ -44,6 +44,9 @@ nohup python main.py  # 不挂断运行python脚本
 
 which name    # 查找系统PATH目录下的可执行文件。
 whereis name  # 通过文件索引数据库而非PATH来查找，查找范围比which要广。
+
+# 清空文件内容
+vi file_name # 输入%d清除所有内容
 ~~~
 
 #### 防火墙设置
@@ -90,16 +93,16 @@ yum(Yellow dog Updater Modified)  # 能够从指定的服务器中下载RPM（Re
 
 curl,即(CommandLine Uniform Resource Locator)  # 利用URL语法在命令行下工作的文件传输工具
 pwd(print working directory)   # 显示当前工作路径。
+
 mkdir dir_name  # 在当前目录下创建文件夹
 touch file_name  # 创建新文件
-source ./etc/profile  # 使环境变量生效。
+
 find *python*  # 查找当前目录下包含python关键字的文件
 find / -name 'read*'   # 在/目录下查找read开头的文件或目录
 # -name:文件名或目录名
 # -type:查找类型，如-d表示查找目录
 
-# 清空文件内容
-vi file_name # 输入%d清除所有内容
+
 ~~~
 
 
