@@ -45,28 +45,28 @@ git push git@github.com:ChaoKing2020/study.git master:main
 #### 1.1、需要在本地额外新建分支
 
 ~~~shell
-// 查看远程
+# 查看远程
 git remote -v 
-// 获取远程指定分支到本地临时新建的分支
-git fetch origin master:temp // 获取远程master的分支的代码到临时新建的temp
-// 查看版本差异
-git diff temp // 查看temp分支与当前分支的差异
-// 将临时分支temp合并到当前分支
+# 获取远程指定分支到本地临时新建的分支
+git fetch origin master:temp  # 获取远程master的分支的代码到临时新建的temp
+# 查看版本差异
+git diff temp  # 查看temp分支与当前分支的差异
+# 将临时分支temp合并到当前分支
 git merge tmep
-// 删除临时分支
+# 删除临时分支
 git branch -D temp
 ~~~
 
 #### 1.2、不要在本地新建分支的
 
-```git
-// 查看远程
+```shell
+# 查看远程
 git remote -v
-// 获取远程分支到本地
-git fetch origin master // 获取远程的master分支
-// 查看版本差异
-git log -p master..origin/master // 查看远程master分支与本地master分支的差别
-// 合并到本地分支
+# 获取远程分支到本地
+git fetch origin master  # 获取远程的master分支
+# 查看版本差异
+git log -p master..origin/master  # 查看远程master分支与本地master分支的差别
+# 合并到本地分支
 git merge origin/master
 ```
 
@@ -74,9 +74,9 @@ git merge origin/master
 
 > git pull相当于git fetch与git merge一起使用，但是这样使用容易出错所以推荐第一种方式
 
-```git
-// 查看远程
+```shell
+# 查看远程
 git remote -v
-// 拉取并合并到本地分支
-git pull origin master // 拉取远程的master分支合并到当前分支
+# 拉取并合并到本地分支
+git pull origin master  # 拉取远程的master分支合并到当前分支
 ```
