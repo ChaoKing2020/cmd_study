@@ -88,8 +88,6 @@ df -hl  # 查看磁盘分区上的磁盘空间。
 # -h  以可读性较高的方式来显示信息。
 # -l  仅显示本地的文件系统。
 
-wget(world wide web get)  # 是一个下载文件的工具。wget是在Linux下开发的开源的软件。
-yum(Yellow dog Updater Modified)  # 能够从指定的服务器中下载RPM（Redhat Package Manager）包并且安装。
 
 curl,即(CommandLine Uniform Resource Locator)  # 利用URL语法在命令行下工作的文件传输工具
 pwd(print working directory)   # 显示当前工作路径。
@@ -130,12 +128,18 @@ reboot  # 重启
 
 
 ~~~shell
+yum(Yellow dog Updater Modified)  # 能够从指定的服务器中下载RPM（Redhat Package Manager）包并且安装。
+wget(world wide web get)  # 是一个下载文件的工具。wget是在Linux下开发的开源软件。
+
 rpm -qa | grep firefox  # 查看当前系统已经安装的rpm软件包
 rpm -e firefox  # 卸载rpm软件包
 rpm -ivh firefox-45.4.0-1.e17.centos.x86_64.rpm
 # -i=install 安装
 # -v=verbose 提示
 # -h=hash 进度条
+
+apt-get install package_name  # 安装软件包
+apt-get remove package_name  # 删除软件包
 ~~~
 
 #### shell脚本的执行方式
