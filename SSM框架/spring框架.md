@@ -1,74 +1,141 @@
-## 通过xml装入spring容器中
+## 注入spring容器的两种方法
 
-**User类** 
+#### 法一：xml方法
+
+**User.java**
 
 ```java
-private String name;
-private List<String> books;
-public void setName(String name) {
-    this.name = name;
-}
-public void setBooks(List<String> books){
-    this.books = books;
+public class User {
+    private String name;
+    private List<String> books;
+
+    public User() {
+    }
+
+    public User(String name, List<String> books) {
+        this.name = name;
+        this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", books=" + books +
+                '}';
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBooks(List<String> books) {
+        this.books = books;
+    }
+
 }
 ```
+
+bean标签的id为唯一标识符，class为注入的实体类。通过实体类中的setName方法进行属性注入。
 
 **User.xml ** 
 
 ```xml
-<!--id是bean的唯一标识，class是类路径-->
-<bean id="myUser" class="User">
-    <property name="name" value="Demo"/>
-    <property name="books">
-        <list>
-            <value>西游记</value>
-            <value>水浒传</value>
-            <value>三国演义</value>
-            <value>红楼梦</value>
-        </list>
-    </property>
-</bean>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.ck.entity.User">
+        <property name="name" value="Demo"/>
+        <property name="books">
+            <list>
+                <value>红楼梦</value>
+                <value>三国演义</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
 ```
 
-**获取User类** 
+Application.java，首先通过ClassPathXmlApplicationContext对象获取resouces根目录下实体类user的xml文件，然后调用该对象的getBean方法，其中第一个参数为xml文件中bean标签所指定的id，第二个参数为实体类的类路径。
 
 ```java
-// 首先，获取resources根目录下的User.xml，然后，再获取bean的唯一标识符myUser下的属性值
-new ClassPathXmlApplicationContext("User.xml").getBean("myUser", User.class)
+public static void main(String[] args) {
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+    System.out.println(context.getBean("user", User.class));
+}
 ```
 
-## 通过注解装入spring容器中
+#### 法二：注解
+
+Database.java
 
 ~~~java
-@Bean
-public User getUser() {
-    User user = new User();
-    user.setName("Demo");
-    List<String> books = new LinkedList<>();
-    books.add("西游记");
-    books.add("水浒传");
-    books.add("三国演义");
-    books.add("红楼梦");
-    user.setBooks(books);
-    return user;
+public class Database {
+    private String driver;
+    private String url;
+    private String username;
+    private String password;
+
+    public Database() {
+    }
+
+    public Database(String driver, String url, String username, String password) {
+        this.driver = driver;
+        this.url = url;
+        this.username = username;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "MyDatabase{" +
+                "driver='" + driver + '\'' +
+                ", url='" + url + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
 }
 ~~~
 
-获取UserConfig中的属性
+Config.java，通过bean注解将该方法托管给spring。
 
 ~~~java
-// 获得当前MyTest类中bean注解下getUser方法，并返回一个User对象。
-new AnnotationConfigApplicationContext(MyTest.class).getBean("getUser")
+public class Config {
+    @Bean
+    public Database getDatabase() {
+        String drive = "com.mysql.cj.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/my_db";
+        String userName = "root";
+        String pwd = "123456";
+        return new Database(drive, url, userName, pwd);
+    }
+}
+~~~
+
+Application.java，通过AnnotationConfig上下文获取由spring管理的方法，并得到其返回值。
+
+~~~java
+public static void main(String[] args) {
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+    System.out.println(context.getBean("getDatabase", Database.class));
+}
 ~~~
 
 ## Spring与mybatis结合
 
-**mybatis.xml** 
+mybatis.xml
 
 ~~~xml
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
 <!--第一步，连接数据库-->
 <bean id="dataSource" class="com.mysql.cj.jdbc.MysqlDataSource">
     <property name="url" value="jdbc:mysql://localhost:3306/ssm"/>

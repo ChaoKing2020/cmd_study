@@ -14,7 +14,6 @@ worker_connections，支持最大连接数
 ./nginx     # 启动nginx
 ./nginx -s stop    # 停止nginx
 ./nginx -s reload  # 重新启动nginx
-ps -ef|grep nginx  # 查询nginx主进程
 ~~~
 
 

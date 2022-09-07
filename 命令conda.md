@@ -33,3 +33,7 @@ conda list -n yolov5-hat --export > requirements.txt  # 将当前环境下的依
 conda search numpy  # 查看可安装的包版本
 ~~~
 
+~~~shell
+pip install -i http://mirrors.aliyun.com/pypi/simple scipy==1.8 --trusted-host mirrors.aliyun.com
+~~~
+
