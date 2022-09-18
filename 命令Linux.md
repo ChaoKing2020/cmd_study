@@ -15,6 +15,15 @@ debian系列的安装包格式为deb，安装deb包的命令为dpkg -参数。
 ### 常用命令
 
 ~~~shell
+#! /bin/sh
+# '#!'之后的解释程序，需要写其绝对路径。
+# coding:utf-8
+# 说明文件编码方式
+~~~
+
+
+
+~~~shell
 ps -ef | grep tomcat  # 查看当前系统运行的进程。f为format，显示全格式。
 ps -aux  # 查看当前所有进程
 # ps(process status)显示当前进程信息。
@@ -99,8 +108,6 @@ find *python*  # 查找当前目录下包含python关键字的文件
 find / -name 'read*'   # 在/目录下查找read开头的文件或目录
 # -name:文件名或目录名
 # -type:查找类型，如-d表示查找目录
-
-
 ~~~
 
 
@@ -120,7 +127,7 @@ ll  # 即ls -lt，查看当前目录下的文件及目录的权限等信息。
 ll filename  # 查看当前文件权限
 
 su root  # 切换到root用户
-sudo passwd root  # 修改root用户密码
+su passwd root  # 修改root用户密码
 
 reboot  # 重启
 ~~~
@@ -147,11 +154,11 @@ apt-get remove package_name  # 删除软件包
 ~~~shell
 1、输入脚本的绝对路径或相对路径
 例如,/root/hello.sh 或 ./hello.sh
-注意："./"执行脚本需要获得可执行权限
+注意：使用绝对或相对路径需要可执行权限
 2、bash或sh+脚本
 例如，sh hello.sh
-3、在脚本前加source
-例如，source hello.sh
+3、在脚本前加source或'.'
+例如，source hello.sh等价于 . hello.sh
 ~~~
 
 #### 数组声明
