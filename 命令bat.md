@@ -57,6 +57,14 @@ pause
 set /p var=请输入变量的值
 echo %var%
 pause
+
+# 复制目录下的所有文件夹及其文件到指定目录
+xcopy /y /e /h D:\desktop E:\desktop
+/y 禁止提示确定要覆盖的目标文件
+/e 包括空文件
+/h 包括隐藏文件
+
+cd # 显示当前目录
 ~~~
 
 
